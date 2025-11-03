@@ -46,6 +46,7 @@ public class ProductsController {
     // POST /api/products
     @PostMapping
     public ResponseEntity<Products> createProduct(@Valid @RequestBody Products product) {
+        product.setCreated_at(Date.from(Instant.now()));
         Products saved = productsRepository.save(product);
 
         // Build URI to the newly created resource: /api/products/{id}
