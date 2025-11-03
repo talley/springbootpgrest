@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "warnings": [
+    {
+      "code": "",
+      "cwe": 0,
+      "level": 0,
+      "positions": [],
+      "message": "Failed to run PVS-Studio Java analyzer core (return code 1). Please contact us at \u0027https://pvs-studio.com/en/about-feedback/\u0027 \r\n",
+      "projects": [],
+      "favorite": false,
+      "falseAlarm": false,
+      "analyzedSourceFiles": []
+    }
+  ]
+}
