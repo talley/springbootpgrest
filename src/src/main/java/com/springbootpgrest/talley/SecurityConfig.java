@@ -1,6 +1,5 @@
 package com.springbootpgrest.talley;
 
-import com.example.demo.auth.*;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;

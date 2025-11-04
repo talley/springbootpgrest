@@ -21,7 +21,6 @@ public class User {
     @Column(name = "role")
     private Set<String> roles;
 
-    // getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getUsername() { return username; }

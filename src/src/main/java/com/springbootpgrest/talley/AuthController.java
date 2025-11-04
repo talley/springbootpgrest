@@ -34,12 +34,12 @@ public class AuthController {
     // Register new user
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
-        if (userRepository.existsByUsername(req.getUsername())) {
+        if (userRepository.existsByUsername(req.username())) {
             return ResponseEntity.badRequest().body(Map.of("error", "Username already taken"));
         }
         User u = new User();
-        u.setUsername(req.getUsername());
-        u.setPassword(passwordEncoder.encode(req.getPassword()));
+        u.setUsername(req.username());
+        u.setPassword(passwordEncoder.encode(req.password()));
         u.setRoles(Set.of("ROLE_USER"));
         userRepository.save(u);
         return ResponseEntity.ok(Map.of("message", "User registered"));
@@ -49,9 +49,9 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest req) {
         try {
-            var authToken = new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword());
+            var authToken = new UsernamePasswordAuthenticationToken(req.username(), req.password());
             authenticationManager.authenticate(authToken);
-            UserDetails ud = userDetailsService.loadUserByUsername(req.getUsername());
+            UserDetails ud = userDetailsService.loadUserByUsername(req.username());
             String token = jwtUtil.generateToken((org.springframework.security.core.userdetails.User) ud);
             return ResponseEntity.ok(Map.of("token", token));
         } catch (BadCredentialsException ex) {
